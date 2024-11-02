@@ -1,6 +1,5 @@
 package com.bruno10log.productapi.modules.supplier.model;
 
-
 import com.bruno10log.productapi.modules.supplier.dto.SupplierRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

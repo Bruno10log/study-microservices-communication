@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -33,6 +35,14 @@ public class Product {
     @Column(name = "QUANTITY_AVAILABLE")
     private Integer quantityAvailable;
 
+    @Column(name = "CREATED_AT", nullable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    @PrePersist
+    public void prePersist() {
+        createdAt = LocalDateTime.now();
+    }
+
     public Product(String name, Category category, Supplier supplier, Integer quantityAvailable) {
         this.category = category;
         this.supplier = supplier;
@@ -40,9 +50,9 @@ public class Product {
         this.name = name;
     }
 
-    public static Product of(ProductRequest request) {
-        return new Product(request.name(), request.category(),
-                            request.supplier(), request.quantityAvailable());
+    public static Product of(ProductRequest request, Supplier supplier, Category category) {
+        return new Product(request.name(), category,
+                            supplier, request.quantityAvailable());
     }
 
 }
