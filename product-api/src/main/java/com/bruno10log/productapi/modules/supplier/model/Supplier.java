@@ -1,6 +1,7 @@
-package com.bruno10log.productapi.modules.product.model;
+package com.bruno10log.productapi.modules.supplier.model;
 
 
+import com.bruno10log.productapi.modules.supplier.dto.SupplierRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,5 +20,13 @@ public class Supplier {
 
     @Column(name = "NAME", nullable = false)
     private String name;
+
+    Supplier(String name) {
+        this.setName(name);
+    }
+
+    public static Supplier of(SupplierRequest request) {
+        return new Supplier(request.name());
+    }
 
 }

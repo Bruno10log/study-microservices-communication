@@ -1,5 +1,6 @@
-package com.bruno10log.productapi.modules.product.model;
+package com.bruno10log.productapi.modules.category.model;
 
+import com.bruno10log.productapi.modules.category.dto.CategoryRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,5 +19,13 @@ public class Category {
 
     @Column(name = "DESCRIPTION", nullable = false)
     private String description;
+
+    Category(String description) {
+        this.setDescription(description);
+    }
+
+    public static Category of(CategoryRequest request) {
+       return new Category(request.description());
+    }
 
 }
