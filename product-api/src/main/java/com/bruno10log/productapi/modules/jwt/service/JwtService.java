@@ -1,14 +1,13 @@
 package com.bruno10log.productapi.modules.jwt.service;
 
-import static io.jsonwebtoken.lang.Objects.isEmpty;
-
 import com.bruno10log.productapi.config.exception.AuthenticationException;
 import com.bruno10log.productapi.modules.jwt.dto.JwtResponse;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.lang.Strings;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+
+import static io.jsonwebtoken.lang.Objects.isEmpty;
 
 @Service
 public class JwtService {

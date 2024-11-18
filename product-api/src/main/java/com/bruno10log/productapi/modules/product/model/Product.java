@@ -55,4 +55,8 @@ public class Product {
                             supplier, request.quantityAvailable());
     }
 
+    public void updateStock(Integer quantity) {
+        quantityAvailable -= quantity;
+    }
+
 }
